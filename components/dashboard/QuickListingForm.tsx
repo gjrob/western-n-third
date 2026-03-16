@@ -2,6 +2,8 @@
 
 import { useState } from 'react'
 import { createClient } from '@/lib/supabase'
+import { buildQRUrl } from '@/lib/qr-utils'
+import QRCodeDisplay from '@/components/QRCodeDisplay'
 
 const CATEGORIES = [
   { value: 'lumber',   label: 'Lumber & Wood' },
@@ -27,7 +29,8 @@ export default function QuickListingForm({
   const supabase = createClient()
   const [form, setForm] = useState(INITIAL)
   const [loading, setLoading] = useState(false)
-  const [success, setSuccess] = useState(false)
+  const [createdListingId, setCreatedListingId] = useState<string | null>(null)
+  const [createdTitle, setCreatedTitle] = useState('')
 
   const set = (key: string, val: string) => setForm(prev => ({ ...prev, [key]: val }))
 
@@ -36,22 +39,33 @@ export default function QuickListingForm({
     setLoading(true)
 
     try {
-      const { error } = await supabase.from('listings').insert({
-        vendor_id: vendorId,
-        title: form.title.trim(),
-        category: form.category,
-        asking_price_cents: Math.round(parseFloat(form.askingPrice) * 100),
-        quantity_available: parseInt(form.quantity) || 1,
-        condition: form.condition,
-        description: form.description.trim(),
-        status: 'active',
+      const { data: listing, error } = await supabase
+        .from('listings')
+        .insert({
+          vendor_id: vendorId,
+          title: form.title.trim(),
+          category: form.category,
+          asking_price_cents: Math.round(parseFloat(form.askingPrice) * 100),
+          quantity_available: parseInt(form.quantity) || 1,
+          condition: form.condition,
+          description: form.description.trim(),
+          status: 'active',
+        })
+        .select('id, title')
+        .single()
+
+      if (error || !listing) throw error || new Error('No listing returned')
+
+      // Auto-generate QR code record
+      await supabase.from('qr_codes').insert({
+        listing_id: listing.id,
+        client_slug: 'western-n-third',
+        destination_url: buildQRUrl(listing.id),
       })
 
-      if (error) throw error
-
+      setCreatedListingId(listing.id)
+      setCreatedTitle(listing.title)
       setForm(INITIAL)
-      setSuccess(true)
-      setTimeout(() => setSuccess(false), 3000)
       onSuccess?.()
     } catch (err) {
       console.error('Listing creation error:', err)
@@ -61,13 +75,28 @@ export default function QuickListingForm({
     }
   }
 
+  if (createdListingId) {
+    return (
+      <div style={{ padding: '24px', background: '#f0fdf4', border: '1px solid #bbf7d0', borderRadius: '8px', textAlign: 'center' }}>
+        <div style={{ fontSize: '1.1rem', fontWeight: 700, color: '#15803d', marginBottom: '4px' }}>✓ Listing Created!</div>
+        <div style={{ color: '#374151', marginBottom: '20px', fontSize: '0.9rem' }}>{createdTitle}</div>
+        <div style={{ marginBottom: '20px' }}>
+          <p style={{ fontSize: '0.85rem', color: '#6b7280', marginBottom: '12px' }}>QR code generated — print it and attach to the item:</p>
+          <QRCodeDisplay listingId={createdListingId} title={createdTitle} size={180} />
+        </div>
+        <button
+          onClick={() => { setCreatedListingId(null); setCreatedTitle('') }}
+          className="btn"
+          style={{ fontSize: '0.9rem' }}
+        >
+          + Add Another Listing
+        </button>
+      </div>
+    )
+  }
+
   return (
     <form onSubmit={handleSubmit}>
-      {success && (
-        <div style={{ padding: '12px 16px', background: '#d4edda', color: '#155724', borderRadius: '4px', marginBottom: '16px', fontWeight: 600 }}>
-          ✓ Listing created!
-        </div>
-      )}
 
       <div className="db-form-row">
         <div className="db-form-group">

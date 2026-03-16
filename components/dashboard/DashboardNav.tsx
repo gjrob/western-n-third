@@ -4,8 +4,9 @@ import { useRouter, usePathname } from 'next/navigation'
 import { createClient } from '@/lib/supabase'
 
 const NAV_ITEMS = [
-  { href: '/dashboard',           label: '📊 Overview' },
-  { href: '/marketplace',         label: '🛒 Marketplace' },
+  { href: '/dashboard',                   label: '📊 Overview' },
+  { href: '/dashboard/qr-analytics',      label: '📱 QR Analytics' },
+  { href: '/marketplace',                 label: '🛒 Marketplace' },
 ]
 
 export default function DashboardNav() {
