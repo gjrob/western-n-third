@@ -12,8 +12,8 @@ interface ChatBotProps {
 }
 
 const WELCOME: Record<'en' | 'es', string> = {
-  en: "Hi! I'm here to help with Western N Third Building Materials. Ask me about our inventory, pricing, or hours!",
-  es: '¡Hola! Estoy aquí para ayudarte con Western N Third. Pregúntame sobre nuestro inventario, precios o horarios.',
+  en: "Hi! I'm here to help with Western 'N' Third Building Materials. Ask me about our inventory, pricing, or hours!",
+  es: "¡Hola! Estoy aquí para ayudarte con Western 'N' Third. Pregúntame sobre nuestro inventario, precios o horarios.",
 }
 
 export default function ChatBot({ lang = 'en' }: ChatBotProps) {

@@ -106,7 +106,7 @@ export default function VendorSetupPage() {
       <div className="auth-container" style={{ maxWidth: '580px' }}>
         <div className="auth-logo">
           {/* eslint-disable-next-line @next/next/no-img-element */}
-          <img src="/logo.png" alt="Western N Third" />
+          <img src="/logo.png" alt="Western 'N' Third" />
           <div className="auth-logo-subtitle">Complete Your Profile</div>
           <div className="auth-logo-description">Add your business details to start listing</div>
         </div>

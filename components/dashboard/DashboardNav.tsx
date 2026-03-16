@@ -23,7 +23,7 @@ export default function DashboardNav() {
     <nav className="dashboard-nav">
       <div className="dashboard-nav-header">
         <div className="dashboard-nav-logo">BTV CRM</div>
-        <div className="dashboard-nav-tagline">Western N Third</div>
+        <div className="dashboard-nav-tagline">Western 'N' Third</div>
       </div>
 
       <ul className="dashboard-nav-items">

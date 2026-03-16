@@ -85,7 +85,7 @@ export default function VendorSignupPage() {
           <h2 style={{ fontFamily: "'Cormorant Garamond', serif", fontSize: '1.5rem', marginBottom: '8px', color: '#059669' }}>
             Account Created
           </h2>
-          <p style={{ color: '#6b7280' }}>Welcome to Western N Third. Redirecting to setup...</p>
+          <p style={{ color: '#6b7280' }}>Welcome to Western 'N' Third. Redirecting to setup...</p>
         </div>
       </div>
     )
@@ -96,9 +96,9 @@ export default function VendorSignupPage() {
       <div className="auth-container">
         <div className="auth-logo">
           {/* eslint-disable-next-line @next/next/no-img-element */}
-          <img src="/logo.png" alt="Western N Third" />
+          <img src="/logo.png" alt="Western 'N' Third" />
           <div className="auth-logo-subtitle">Vendor Portal</div>
-          <div className="auth-logo-description">Western N Third Building Materials</div>
+          <div className="auth-logo-description">Western 'N' Third Building Materials</div>
         </div>
 
         <form onSubmit={handleSignup} className="auth-form">

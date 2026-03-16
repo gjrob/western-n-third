@@ -51,7 +51,7 @@ export default function Page() {
   const [lang, setLang] = useState<'en' | 'es'>('en')
 
   const t = {
-    heroTitle:      { en: 'Western N Third',                    es: 'Western N Third' },
+    heroTitle:      { en: "Western 'N' Third",                    es: "Western 'N' Third" },
     heroSub:        { en: 'Industrial Building Materials',       es: 'Materiales de Construcción Industrial' },
     heroBuySell:    { en: 'Buy • Sell • Trade',                  es: 'Compra • Venta • Intercambio' },
     heroCopy:       {
@@ -65,7 +65,7 @@ export default function Page() {
     locationTitle:  { en: 'Location & Contact',   es: 'Ubicación y Contacto' },
     phone:          { en: '(910) 555-0123',        es: '(910) 555-0123' },
     address:        { en: '123 Western Ave N, Wilmington, NC 28401', es: '123 Western Ave N, Wilmington, NC 28401' },
-    footerCopy:     { en: '© 2026 Western N Third Building Materials. All rights reserved.', es: '© 2026 Western N Third. Todos los derechos reservados.' },
+    footerCopy:     { en: "© 2026 Western 'N' Third Building Materials. All rights reserved.", es: "© 2026 Western 'N' Third. Todos los derechos reservados." },
   }
 
   return (
@@ -76,7 +76,7 @@ export default function Page() {
         dangerouslySetInnerHTML={{ __html: JSON.stringify({
           '@context': 'https://schema.org',
           '@type': 'LocalBusiness',
-          name: 'Western N Third Building Materials',
+          name: "Western 'N' Third Building Materials",
           telephone: '(910) 555-0123',
           address: {
             '@type': 'PostalAddress',
@@ -95,7 +95,7 @@ export default function Page() {
       {/* Nav */}
       <nav className="nav">
         {/* eslint-disable-next-line @next/next/no-img-element */}
-        <img src="/logo.png" alt="Western N Third" className="nav-logo-img" />
+        <img src="/logo.png" alt="Western 'N' Third" className="nav-logo-img" />
         <div className="nav-right">
           <a href="#materials" className="nav-link">
             {lang === 'en' ? 'Materials' : 'Materiales'}
@@ -180,7 +180,7 @@ export default function Page() {
             <h2 className="section-title">{t.locationTitle[lang]}</h2>
             <div className="info-block">
               <p style={{ fontWeight: 600, marginBottom: '12px', color: 'var(--accent-deep)', fontSize: '1.1rem' }}>
-                Western N Third Building Materials
+                Western 'N' Third Building Materials
               </p>
               <p style={{ marginBottom: '20px', color: 'var(--text-secondary)' }}>{t.address[lang]}</p>
               <p style={{ marginBottom: '12px' }}>

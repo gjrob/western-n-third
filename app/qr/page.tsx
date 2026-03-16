@@ -32,7 +32,7 @@ export default function QRPage() {
       <div className="qr-card">
         <div className="qr-eyebrow">Scan to Visit</div>
         <div className="qr-brand">
-          Western N Third
+          Western 'N' Third
           <span>Industrial Building Materials</span>
         </div>
 
@@ -40,7 +40,7 @@ export default function QRPage() {
           {/* eslint-disable-next-line @next/next/no-img-element */}
           <img
             src={`https://api.qrserver.com/v1/create-qr-code/?size=256x256&data=${encodeURIComponent(QR_URL)}&bgcolor=ffffff&color=1a1a1a&margin=2`}
-            alt="QR Code for Western N Third Building Materials"
+            alt="QR Code for Western 'N' Third Building Materials"
             width={256}
             height={256}
             style={{ display: 'block' }}

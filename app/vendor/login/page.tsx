@@ -48,9 +48,9 @@ export default function VendorLoginPage() {
       <div className="auth-container">
         <div className="auth-logo">
           {/* eslint-disable-next-line @next/next/no-img-element */}
-          <img src="/logo.png" alt="Western N Third" />
+          <img src="/logo.png" alt="Western 'N' Third" />
           <div className="auth-logo-subtitle">Vendor Portal</div>
-          <div className="auth-logo-description">Western N Third Building Materials</div>
+          <div className="auth-logo-description">Western 'N' Third Building Materials</div>
         </div>
 
         <form onSubmit={handleLogin} className="auth-form">

@@ -109,7 +109,7 @@ export default async function ProductQRPage({
             marginBottom: '24px',
           }}>
             <div style={{ fontWeight: 700, color: '#111827', marginBottom: '4px' }}>
-              {vendor?.business_name || 'Western N Third'}
+              {vendor?.business_name || "Western 'N' Third"}
             </div>
             {vendor?.city && (
               <div style={{ fontSize: '0.85rem', color: '#6b7280' }}>
@@ -168,7 +168,7 @@ export default async function ProductQRPage({
 
           {/* Footer */}
           <div style={{ marginTop: '24px', paddingTop: '16px', borderTop: '1px solid #f3f4f6', textAlign: 'center', fontSize: '0.8rem', color: '#9ca3af' }}>
-            Western N Third Building Materials · Wilmington, NC
+            Western 'N' Third Building Materials · Wilmington, NC
           </div>
         </div>
       </div>
